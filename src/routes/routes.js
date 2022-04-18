@@ -8,35 +8,35 @@ const router = Router();
 //Genre routes
 router.get("/genre", getAllGenres);
 
-router.get("/genre/10", getGenre);
+router.get("/genre/:id", getGenre);
 
 router.post("/genre", createGenre);
 
-router.delete("/genre", deleteGenre);
+router.delete("/genre/:id", deleteGenre);
 
-router.put("/genre", updateGenre);
+router.put("/genre/:id", updateGenre);
 
 //Books routes
 router.get("/book", getAllBooks);
 
-router.get("/book/10", getBook);
+router.get("/book/:id", getBook);
 
 router.post("/book", createBook);
 
-router.delete("/book", deleteBook);
+router.delete("/book/:id", deleteBook);
 
-router.put("/book", updateBook);
+router.put("/book/:id", updateBook);
 
 //Users routes
 router.get("/user", getAllUsers);
 
-router.get("/user/10", getUser);
+router.get("/user/:id", getUser);
 
 router.post("/user", createUser);
 
-router.delete("/user", deleteUser);
+router.delete("/user/:id", deleteUser);
 
-router.put("/user", updateUser);
+router.put("/user/:id", updateUser);
 
 
 
