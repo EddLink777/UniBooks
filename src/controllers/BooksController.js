@@ -33,7 +33,7 @@ const getBook = async (req, res, next) => {
 };
 
 const createBook = async (req, res, next) => {
-    const {title, author, published_year, genre}  = req.body;
+    const {title, author, published_year, copies, genre}  = req.body;
      
     try{
         const genredb = await db.query("SELECT * FROM genres WHERE id = $1",[genre]);
@@ -43,8 +43,8 @@ const createBook = async (req, res, next) => {
         }
     
         const result = await db.query(
-            "INSERT INTO books (title, author, published_year, genre) VALUES ($1, $2, $3, $4) RETURNING *",
-            [title, author, published_year, genre]);
+            "INSERT INTO books (title, author, published_year, copies, genre) VALUES ($1, $2, $3, $4, $5) RETURNING *",
+            [title, author, published_year, copies, genre]);
             
         res.json(result.rows[0]);
     }
@@ -75,11 +75,11 @@ const deleteBook = async (req, res, next) => {
 const updateBook = async (req, res, next) => {
     try {
         const { id } = req.params;
-        const {title, author, published_year, genre}  = req.body;
+        const {title, author, published_year, copies, genre}  = req.body;
         
         const result = await db.query(
-            "UPDATE books SET title = $1, author = $2, published_year = $3, genre = $4 WHERE id = $5 RETURNING *", 
-            [title, author, published_year, genre, id]);
+            "UPDATE books SET title = $1, author = $2, published_year = $3, copies = $4, genre = $5 WHERE id = $6 RETURNING *", 
+            [title, author, published_year, copies, genre, id]);
         
         if (result.rows.length === 0) 
         return res.status(404).json({
