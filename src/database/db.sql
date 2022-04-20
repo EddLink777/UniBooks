@@ -1,4 +1,4 @@
-create database UniBook
+create database unibook
 
 create table roles(
     id serial Primary Key,
@@ -34,7 +34,7 @@ create table users (
 create table usersxbooks(
     id serial Primary Key,
     returned boolean,
-    user smallint references users(id),
+    user_id smallint references users(id),
     book smallint references books(id)
 )
 
