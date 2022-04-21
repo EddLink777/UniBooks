@@ -1,5 +1,5 @@
 const express = require("express");
-const res = require("../Server/node_modules/express/lib/response");
+const res = require("express/lib/response");
 const morgan = require("morgan");
 const cors = require("cors");
 
