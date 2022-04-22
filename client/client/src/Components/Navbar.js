@@ -1,7 +1,23 @@
+import {Button, AppBar, Box, Container, Toolbar, Typography} from '@mui/material';
+import { Link, useNavigate } from 'react-router-dom';
+
 export default function Navbar(){
+
+    const navigate = useNavigate();
     return(
-        <div>
-            navbar
-        </div>
+        <Box sx={{flexGrow: 1}}>
+            <AppBar position="static" color="transparent">
+                <Container>
+                    <Toolbar>
+                        <Typography variant="h6" sx={{flexGrow: 1}}>
+                            Welcome to U Library
+                            <Link style={{textDecoration:"none", color:"white"}} to="/login">Login</Link>
+                            
+                        </Typography>
+                        <Button variant="contained" color="secondary" onClick={()=>navigate("/newaccount")}>Create Account</Button>
+                    </Toolbar>
+                </Container>
+            </AppBar>
+        </Box>
     )
 }
