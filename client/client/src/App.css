@@ -36,3 +36,27 @@
     transform: rotate(360deg);
   }
 }
+
+/*MY*/
+.CardBg{
+  background-color: #1e272e !important;
+  padding:2rem;
+}
+
+.CardC{
+  display:flex;
+  justify-content:space-between;
+}
+
+.WhiteC{
+  color: white;
+}
+
+.BtnD-margin{
+  margin-left:0.5rem !important;
+}
+
+.Card-inMap{
+  background-color: #1e272e !important;
+  margin-bottom: .7rem !important;
+}

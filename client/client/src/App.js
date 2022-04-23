@@ -34,9 +34,9 @@ export default function App(){
           <Route path='/users' element={<Land/>}/>
           <Route path='/users/new' element={<Land/>}/>
           <Route path='/users/edit/:id' element={<Land/>}/>
-          <Route path='/genres' element={<Land/>}/>
+          <Route path='/genres' element={<GenresList/>}/>
           <Route path='/genres/new' element={<CreateGenre/>}/>
-          <Route path='/genres/edit/:id' element={<Land/>}/>
+          <Route path='/genres/edit/:id' element={<CreateGenre/>}/>
         </Routes>
       </Container>
     </BrowserRouter>
