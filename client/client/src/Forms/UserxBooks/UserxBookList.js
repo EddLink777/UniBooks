@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Button, Card, CardContent, Typography, DataGrid } from "@mui/material";
+import { Button, Card, CardContent, Typography, DataGrid, Box } from "@mui/material";
 import { useNavigate } from "react-router-dom";
 
 export default function CreateUserxBook(){
@@ -62,7 +62,13 @@ export default function CreateUserxBook(){
 
     return(
         <div>
-            <h3>Genres List</h3> 
+            <h3>Not Available Books List</h3> 
+                <Box>
+                    <Button variant="outlined" size="small" color="secondary" className="BtnD-margin" onClick={()=>{navigate("/newaccount")}} >Add Librarian</Button>
+                    <Button variant="outlined" size="small" color="secondary" className="BtnD-margin" onClick={()=>{navigate("/users/new")}} >Add Student</Button>
+                    <Button variant="outlined" size="small" color="secondary" className="BtnD-margin" onClick={()=>{navigate("/genres")}} >Genres</Button>
+                    <Button variant="outlined" size="small" color="secondary" className="BtnD-margin" onClick={()=>{navigate("/books")}} >Books</Button>
+                </Box>
             {
                 userxbook.map((genre) => (
                     <Card className="Card-inMap" key={userxbook.id} >

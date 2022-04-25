@@ -104,7 +104,7 @@ export default function CreateGenre(){
                         {edit ? "Edit Book" : "Create Book"}
                     </Typography>
                     </div>
-                    <Button variant="contained" onClick={()=> navigate("/books")} color="secondary" >Back</Button>
+                    
                     </div>
                     <CardContent>
                         <form onSubmit={handleSubmit} >
@@ -275,10 +275,12 @@ export default function CreateGenre(){
                             </TextField>
 
                             {/* <TextField variant='outlined' placeholder='Genre' label="Ingress new genre" multiline rows={4}/> */}
-
+                            <div>
                             <Button variant="contained" color="success" type="submit" disabled={!book.genre || !book.title ||!book.copies || !book.published_year || !book.author}  sx={{margin: "1rem"}} >
                                 {loading ? <CircularProgress color='success' size={24}/> : "Save"}
                             </Button>
+                            <Button variant="contained" onClick={()=> navigate("/books")} color="secondary" >Back</Button>
+                            </div>
                         </form>
                     </CardContent>
                 </Card>

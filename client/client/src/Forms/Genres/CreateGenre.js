@@ -73,6 +73,7 @@ export default function CreateGenre(){
                     <Typography variant="h6"  color='white' >
                         {edit ? "Edit Genre" : "Create Genre"}
                     </Typography>
+                    
                     <CardContent>
                         <form onSubmit={handleSubmit}>
                             <TextField 
@@ -103,11 +104,15 @@ export default function CreateGenre(){
                             />
 
                             {/* <TextField variant='outlined' placeholder='Genre' label="Ingress new genre" multiline rows={4}/> */}
-
+                            <div>
                             <Button variant="contained" color="success" type="submit" disabled={!genre.genre}  sx={{margin: "1rem"}} >
                                 {loading ? <CircularProgress color='success' size={24}/> : "Save"}
                             </Button>
+                            <Button variant="contained" onClick={()=> navigate("/genres")} color="secondary" >Back</Button>
+                            </div>
                         </form>
+                        
+                        
                     </CardContent>
                 </Card>
 

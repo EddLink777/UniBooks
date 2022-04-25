@@ -88,8 +88,8 @@ export default function BooksList(){
         <div>
             <Box className="CardC">
             <h3>Book List</h3> 
-            <Button variant="outlined" size="small" onClick={()=> navigate("/books/new")} color="secondary" >Add Book</Button>
-            <Button variant="outlined" size="small" onClick={()=> navigate("/")} color="secondary" >Back</Button>
+            <Button variant="outlined" size="small" className="BtnD-margin" onClick={()=> navigate("/books/new")} color="secondary" >Add Book</Button>
+            <Button variant="outlined" size="small" className="BtnD-margin" onClick={()=> navigate("/usersxbooks")} color="secondary" >Back</Button>
             </Box>
             {
                 book.map((book) => (

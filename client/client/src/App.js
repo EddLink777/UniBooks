@@ -15,9 +15,14 @@ import NewLibrarian from './Components/NewLibrarian';
 import BooksList from './Forms/Books/BooksList';
 import CreateBook from './Forms/Books/CreateBook';
 
-import UsersList from './Forms/Users/UsersList';
+import CreateStudent from './Forms/Users/CreateStudent';
+import UserList from './Forms/Users/UsersList';
+
 import GenresList from './Forms/Genres/GenresList';
 import CreateGenre from './Forms/Genres/CreateGenre';
+
+import UserxBookList from "./Forms/UserxBooks/UserxBookList";
+import CreateUserxBook from "./Forms/UserxBooks/CreateUserxBook";
 
 
 
@@ -33,12 +38,15 @@ export default function App(){
           <Route path='/books' element={<BooksList/>}/>
           <Route path='/books/new' element={<CreateBook/>}/>
           <Route path='/books/edit/:id' element={<CreateBook/>}/>
-          <Route path='/users' element={<Land/>}/>
-          <Route path='/users/new' element={<Land/>}/>
-          <Route path='/users/edit/:id' element={<Land/>}/>
+          <Route path='/users' element={<UserList/>}/>
+          <Route path='/users/new' element={<CreateStudent/>}/>
+          <Route path='/users/edit/:id' element={<CreateStudent/>}/>
           <Route path='/genres' element={<GenresList/>}/>
           <Route path='/genres/new' element={<CreateGenre/>}/>
           <Route path='/genres/edit/:id' element={<CreateGenre/>}/>
+          <Route path='/usersxbooks' element={<UserxBookList/>}/>
+          <Route path='/usersxbooks/new' element={<CreateUserxBook/>}/>
+          <Route path='/usersxbooks/edit/:id' element={<CreateUserxBook/>}/>
         </Routes>
       </Container>
     </BrowserRouter>

@@ -38,6 +38,8 @@ export default function GenresList(){
     return(
         <div>
             <h3>Genres List</h3> 
+            <Button variant="outlined" size="small" className="BtnD-margin" onClick={()=> navigate("/genres/new")} color="secondary" >Add Genre</Button>
+            <Button variant="outlined" size="small" className="BtnD-margin" onClick={()=> navigate("/usersxbooks")} color="secondary" >Back</Button>
             {
                 genre.map((genre) => (
                     <Card className="Card-inMap" key={genre.id} >
