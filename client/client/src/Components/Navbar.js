@@ -10,8 +10,8 @@ export default function Navbar(){
                 <Container>
                     <Toolbar>
                         <Typography variant="h6" sx={{flexGrow: 1}}>
-                            Welcome to U Library
-                            <Link style={{textDecoration:"none", color:"white"}} to="/login">Login</Link>
+                            
+                            <Link style={{textDecoration:"none", color:"white"}} to="/">Welcome to U Library</Link>
                             
                         </Typography>
                         <Button variant="contained" color="secondary" onClick={()=>navigate("/newaccount")}>Create Account</Button>

@@ -21,7 +21,7 @@ const getUser = async (req, res, next) => {
             [id]);
         if (user.rows.length === 0) 
         return res.status(404).json({
-            message: "Book not found" 
+            message: "User not found" 
         });
            
        
@@ -33,7 +33,7 @@ const getUser = async (req, res, next) => {
 };
 
 const createUser = async (req, res, next) => {
-    const {first_name, last_name, email, role}  = req.body;
+    const {first_name, last_name, email, role, password}  = req.body;
      
     try{
         
@@ -43,8 +43,8 @@ const createUser = async (req, res, next) => {
         }
     
         const result = await db.query(
-            "INSERT INTO users (first_name, last_name, email, role) VALUES ($1, $2, $3, $4) RETURNING *",
-            [first_name, last_name, email, role]);
+            "INSERT INTO users (first_name, last_name, email, role, password) VALUES ($1, $2, $3, $4, $5) RETURNING *",
+            [first_name, last_name, email, role, password]);
             
         res.json(result.rows[0]);
     }
@@ -58,6 +58,7 @@ const deleteUser = async (req, res, next) => {
     try {
         var { id } = req.params;
         
+        await db.query("DELETE FROM usersxbooks WHERE user_id = $1", [id]);
         const user = await db.query("DELETE FROM users WHERE id = $1", [id]);
         if (user.rowCount === 0) 
         return res.status(404).json({
@@ -75,15 +76,15 @@ const deleteUser = async (req, res, next) => {
 const updateUser = async (req, res, next) => {
     try {
         const { id } = req.params;
-        const {first_name, last_name, email, role}  = req.body;
+        const {first_name, last_name, email, role, password}  = req.body;
         
         const result = await db.query(
-            "UPDATE books SET first_name = $1, last_name = $2, email = $3, role = $4 WHERE id = $5 RETURNING *", 
-            [first_name, last_name, email, role, id]);
+            "UPDATE books SET first_name = $1, last_name = $2, email = $3, role = $4, password = $5 WHERE id = $6 RETURNING *", 
+            [first_name, last_name, email, role, password, id]);
         
         if (result.rows.length === 0) 
         return res.status(404).json({
-            message: "Book not found" 
+            message: "User not found" 
         });
         
        

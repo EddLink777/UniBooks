@@ -1,20 +1,21 @@
 import { Button, Card, CardContent, CircularProgress, Grid, TextField, Typography } from '@mui/material';
 import {  useState, useEffect } from "react";
 import { useNavigate, useParams } from "react-router-dom";
+import validator from "validator";
 
-export default function Login(){
+export default function CreateStudent(){
     const dir ="http://localhost:4000/user/";
     
     const [user, setUser]= useState({
         first_name:"",
         last_name:"",
         email:"",
-        role:"",
-        password:"",
+        role:2,//Student role
     });
 
     const [loading, setLoading] = useState(false);
     const [edit, setEdit] = useState(false);
+    const [emailError, setEmailError] = useState(true);
 
     const navigate = useNavigate();
     const params =useParams();
@@ -52,8 +53,19 @@ export default function Login(){
        
     };
 
-    const handleChange = (e) =>
+    const handleChange = (e) =>{
+        if(user.email!==""){
+            if (validator.isEmail(user.email)) {
+                setEmailError(true);
+                
+            }
+            else {
+                setEmailError(false);
+            };
+        }
         setUser({...user, [e.target.name]:e.target.value});
+    };
+       
 
     const loadUser = async (id) =>{
         const res = await fetch(dir+id);
@@ -79,22 +91,78 @@ export default function Login(){
             <Grid item xs={3}>
                 <Card sx={{mt:5}} className="CardBg">
                     <Typography variant="h6"  color='white' >
-                        {edit ? "Login true" : "Login false"}
+                        {edit ? "Edit User" : "Create User"}
                     </Typography>
                     <CardContent>
                         <form onSubmit={handleSubmit}>
                             <TextField 
                                 variant='outlined' 
-                                placeholder='Name' 
-                                label={edit ? "Name":"Name"} 
+                                placeholder='First Name' 
+                                label={edit ? "First Name":"First Name"} 
                                 sx={{
                                     display: "block",
                                     margin: "1rem"
                                    
                                 }}
                                 color="secondary"
-                                name="genre"
+                                name="first_name"
                                 value={user.first_name}
+                                onChange={handleChange}
+
+                                inputProps={{
+                                    style:{
+                                        color:"white"
+                                    }
+                                }}
+
+                                InputLabelProps={{
+                                    style:{
+                                        color:"white"
+                                    }
+                                }}
+                            />
+
+                            <TextField 
+                                variant='outlined' 
+                                placeholder='Last Name' 
+                                label={edit ? "Last Name":"Last Name"} 
+                                sx={{
+                                    display: "block",
+                                    margin: "1rem"
+                                   
+                                }}
+                                color="secondary"
+                                name="last_name"
+                                value={user.last_name}
+                                onChange={handleChange}
+
+                                inputProps={{
+                                    style:{
+                                        color:"white"
+                                    }
+                                }}
+
+                                InputLabelProps={{
+                                    style:{
+                                        color:"white"
+                                    }
+                                }}
+                            />
+
+                            <TextField 
+                                variant='outlined' 
+                                placeholder='E-mail' 
+                                label={edit ? "E-mail":"E-mail"} 
+                                sx={{
+                                    display: "block",
+                                    margin: "1rem"
+                                   
+                                }}
+                                color="secondary"
+                                name="email"
+                                value={user.email}
+                                helperText={emailError ? "Valid E-mail" : "Invalid E-mail"}
+                                error={!emailError}
                                 onChange={handleChange}
 
                                 inputProps={{
@@ -112,7 +180,7 @@ export default function Login(){
 
                             {/* <TextField variant='outlined' placeholder='Genre' label="Ingress new genre" multiline rows={4}/> */}
 
-                            <Button variant="contained" color="success" type="submit" disabled={!user.first_name}  sx={{margin: "1rem"}} >
+                            <Button variant="contained" color="success" type="submit" disabled={!user.first_name || !user.last_name || user.email.length<2 || !emailError}  sx={{margin: "1rem"}} >
                                 {loading ? <CircularProgress color='success' size={24}/> : "Save"}
                             </Button>
                         </form>

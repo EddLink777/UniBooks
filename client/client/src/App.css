@@ -43,9 +43,18 @@
   padding:2rem;
 }
 
-.CardC{
-  display:flex;
+.CardCB{
+  display: block;
   justify-content:space-between;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+}
+
+.CardCF{
+  display: flex;
+  justify-content:space-between;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
 }
 
 .WhiteC{
@@ -59,4 +68,21 @@
 .Card-inMap{
   background-color: #1e272e !important;
   margin-bottom: .7rem !important;
+}
+
+.Height{
+  height: 35rem !important;
+  color: aliceblue !important;
+  background-color: #1e272e !important;
+}
+
+.ContentL{
+  display: flex;
+  justify-content: space-between;
+  padding: .5rem;
+}
+
+/*Mod*/
+.css-11u53oe-MuiSelect-select-MuiInputBase-input-MuiOutlinedInput-input.MuiSelect-select{
+  color: white !important;
 }

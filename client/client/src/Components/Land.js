@@ -1,7 +1,7 @@
+import Login from "./Login";
+
 export default function Land(){
     return(
-        <div>
-            Land
-        </div>
+        <Login/>
     )
 }

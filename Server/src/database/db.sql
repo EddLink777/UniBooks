@@ -26,6 +26,7 @@ create table users (
     first_name varchar(25),
     last_name varchar (50),
     email varchar(50),
+    password varchar,
     role smallint references roles(id)
    
 

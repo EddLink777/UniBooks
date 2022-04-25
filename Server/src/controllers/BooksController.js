@@ -3,8 +3,8 @@ const db = require("../db");
 const getAllBooks = async (req, res, next) => {
     try { 
         const books = await db.query(
-            "SELECT * FROM books JOIN genres ON books.genre = genres.id");
-      
+            "select books.id as idbook, * from books  join genres on books.genre=genres.id");
+        console.log(books.rows);
         res.json(books.rows)
     } 
     catch (error) {
@@ -17,7 +17,7 @@ const getBook = async (req, res, next) => {
         const { id } = req.params;
 
         const book = await db.query(
-            "SELECT * FROM books JOIN genres ON books.genre = genres.id WHERE books.id = $1", 
+            "select books.id as idbook, * from books join genres on books.genre=genres.id WHERE books.id = $1", 
             [id]);
         if (book.rows.length === 0) 
         return res.status(404).json({
@@ -36,11 +36,11 @@ const createBook = async (req, res, next) => {
     const {title, author, published_year, copies, genre}  = req.body;
      
     try{
-        const genredb = await db.query("SELECT * FROM genres WHERE id = $1",[genre]);
+        // const genredb = await db.query("SELECT * FROM genres WHERE id = $1",[genre]);
                 
-        if (genredb.rows.length === 0) {
-            throw new Error("We need a valid genre");
-        }
+        // if (genredb.rows.length === 0) {
+        //     throw new Error("We need a valid genre");
+        // }
     
         const result = await db.query(
             "INSERT INTO books (title, author, published_year, copies, genre) VALUES ($1, $2, $3, $4, $5) RETURNING *",

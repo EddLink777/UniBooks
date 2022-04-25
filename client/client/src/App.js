@@ -9,10 +9,12 @@ import {Container} from '@mui/material';
 import Land from './Components/Land';
 import Navbar from './Components/Navbar';
 import Login from './Components/Login';
-import NewAccount from './Components/NewAccount';
+import NewLibrarian from './Components/NewLibrarian';
 
 //Forms
 import BooksList from './Forms/Books/BooksList';
+import CreateBook from './Forms/Books/CreateBook';
+
 import UsersList from './Forms/Users/UsersList';
 import GenresList from './Forms/Genres/GenresList';
 import CreateGenre from './Forms/Genres/CreateGenre';
@@ -27,10 +29,10 @@ export default function App(){
         <Routes>
           <Route path='/' element={<Land/>}/>
           <Route path='/login' element={<Login/>}/>
-          <Route path='/newaccount' element={<NewAccount/>}/>
-          <Route path='/books' element={<Land/>}/>
-          <Route path='/books/new' element={<Land/>}/>
-          <Route path='/books/edit/:id' element={<Land/>}/>
+          <Route path='/newaccount' element={<NewLibrarian/>}/>
+          <Route path='/books' element={<BooksList/>}/>
+          <Route path='/books/new' element={<CreateBook/>}/>
+          <Route path='/books/edit/:id' element={<CreateBook/>}/>
           <Route path='/users' element={<Land/>}/>
           <Route path='/users/new' element={<Land/>}/>
           <Route path='/users/edit/:id' element={<Land/>}/>
